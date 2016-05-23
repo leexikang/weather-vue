@@ -24,6 +24,8 @@ var vue = new Vue({
 			+ city + "&units=metric&cnt=8&appid=0735b20d06cac558720dcbb29ff1fcf7";
 			this.$http.get(Url).then(
 				function(response){
+					
+				console.log(Url);
 					this.forecast = response.data;
 				});
 		},
@@ -40,6 +42,9 @@ var vue = new Vue({
 		},
 		location: function(){
 			return this.forecast.city.name;
+		},
+		error: function(){
+			return this.forecast.code;
 		}
 	},
 });
