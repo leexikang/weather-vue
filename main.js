@@ -20,7 +20,7 @@ var vue = new Vue({
 		},
 		fetchForecasts: function(city){
 
-			var Url = "http://api.openweathermap.org/data/2.5/forecast/daily?q="
+			var Url = "//api.openweathermap.org/data/2.5/forecast/daily?q="
 			+ city + "&units=metric&cnt=8&appid=0735b20d06cac558720dcbb29ff1fcf7";
 			this.$http.get(Url).then(
 				function(response){
@@ -32,7 +32,7 @@ var vue = new Vue({
 		}
 	},
 	created: function() {
-		this.fetchForecasts(defaultCity);
+		this.fetchForecasts(defaultCity)
 	},
 	computed: {
 		forecasts: function(){
