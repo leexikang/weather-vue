@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+ <div class="container">
+ 	<div id="weather-app">
+ 		<div class="row">
+ 			<div class="col-md-offset-1">
+ 				<h1>  {{ location }} </h1>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="col-md-offset-1">
+ 				<!-- <form class="form-inline">  -->
+ 					<div class="form-group">
+ 						<input type="text" 
+ 						class="form-control" 
+ 						id="city" 
+ 						v-model="city"
+ 						placeholder="Enter your city name to see the weather" 
+ 						@keyup.enter="fetchForecasts(city)"
+ 						debounce="800"
+ 						>
+ 					</div>
+ 				<!-- </form> -->
+
+		 		<hr/>
+ 			</div>
+ 		</div>
+			<div class="row">
+ 			<div class ="panel panel-default col-md-offset-1 col-md-2" v-for="forecast in forecasts">
+ 		
+ 				<!-- <div class="panel-heading"> -->
+ 				<!-- </div> -->
+
+ 				<div class="panel-body">
+
+					<h3> {{ forecast.dt | toDate }} </h3>
+ 					<hr/>
+ 					<span> {{ forecast.weather[0].description }} </span><br/>
+ 					<span> {{ forecast.temp.min.toFixed() }}&#8451; ~ {{ forecast.temp.max.toFixed() }}&#8451; </span><br/>
+ 					<img :src="fetchImage(forecast.weather[0].icon)">
+
+
+ 				</div>
+ 			</div> 
+ 		</div>
+
+ 	</div>
+ </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.js"></script>
+<script src="main.js"></script>
+</html>
