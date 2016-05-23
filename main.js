@@ -16,11 +16,11 @@ var vue = new Vue({
 	},
 	methods: {
 		fetchImage: function(name){
-			return "http://openweathermap.org/img/w/" + name + ".png";
+			return "//openweathermap.org/img/w/" + name + ".png";
 		},
 		fetchForecasts: function(city){
 
-			var Url = "//api.openweathermap.org/data/2.5/forecast/daily?q="
+			var Url = '//api.openweathermap.org/data/2.5/forecast/daily?q='
 			+ city + "&units=metric&cnt=8&appid=0735b20d06cac558720dcbb29ff1fcf7";
 			this.$http.get(Url).then(
 				function(response){
