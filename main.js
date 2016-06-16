@@ -24,21 +24,25 @@ var vue = new Vue({
 			+ city + "&units=metric&cnt=8&appid=0735b20d06cac558720dcbb29ff1fcf7";
 			this.$http.get(Url).then(
 				function(response){
-					
-				console.log(Url);
 					this.forecast = response.data;
 				});
 		},
-		refreshForecast: function(){
-			this.fetchForecasts();
+		toTwoDimentialArray: function(list, howMany){
+			var result = []; input = list.slice(0); 
+			while(input[0]) { 
+				result.push(input.splice(0, howMany)); 
+			}
+			return result;	
+
 		}
 	},
-	created: function() {
+		created: function() {
 		this.fetchForecasts(defaultCity)
 	},
+
 	computed: {
 		forecasts: function(){
-			return this.forecast.list;	
+			return this.toTwoDimentialArray(this.forecast.list, 3);
 		},
 		location: function(){
 			return this.forecast.city.name;

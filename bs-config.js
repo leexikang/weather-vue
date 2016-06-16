@@ -16,13 +16,13 @@ module.exports = {
     "ui": {
         "port": 3001,
         "weinre": {
-            "port": 8080
+            "port": 8000
         }
     },
     "files": "*",
     "watchOptions": {},
     "server": false,
-    "proxy": "localhost:8888",
+    "proxy": "localhost:8000",
     "port": 3000,
     "middleware": false,
     "serveStatic": [],
